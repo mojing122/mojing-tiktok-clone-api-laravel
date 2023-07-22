@@ -1,66 +1,119 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 基于Nuxt.js+Laravel复刻实现tiktok网页版(API)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/mojing122/mojing-tiktok-clone-api-laravel/master?logo=GitHub)![GitHub repo size](https://img.shields.io/github/repo-size/mojing122/mojing-tiktok-clone-api-laravel)![GitHub](https://img.shields.io/github/license/mojing122/mojing-tiktok-clone-api-laravel)
 
-## About Laravel
+本项目为mojing-tiktok-clone-nuxt的后端部分，采用Laravel框架+MySQL实现，前端见项目[mojing122/mojing-tiktok-clone-nuxt (github.com)](https://github.com/mojing122/mojing-tiktok-clone-nuxt/)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+项目参考John-Weeks-Dev的教程[youtube.com/watch?v=CHSL0Btbj_o](https://www.youtube.com/watch?v=CHSL0Btbj_o)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+预览：
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+![ss-2023722](tiktok-clone/ss-2023722.gif)
 
-## Learning Laravel
+网页预览：https://tiktok.mojing.live
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Github：[mojing122/mojing-tiktok-clone-api-laravel (github.com)](https://github.com/mojing122/mojing-tiktok-clone-api-laravel)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Gitee：[mojing-tiktok-clone-api-laravel (gitee.com)](https://gitee.com/sha-zhiqing/mojing-tiktok-clone-api-laravel)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 实现功能
 
-## Laravel Sponsors
+- [x] 登录、注册
+- [x] 登录拦截器
+- [x] 首页
+  - [x] 滚动页面自动播放/暂停
+  - [x] 点赞
+  - [x] 随机展示其他用户
+- [x] 个人资料页
+  - [x] 上传头像（需权限）
+  - [x] 修改个人资料（需权限）
+  - [x] 展示个人上传视频
+- [x] 上传视频
+- [x] 视频详情页
+  - [x] 上下切换视频
+  - [x] 点赞、评论
+  - [x] 删除视频（需权限）
+- [ ] ……
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## 项目运行
 
-### Premium Partners
+```bash
+composer install 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+cp .env.example .env 
+```
 
-## Contributing
+修改.env中的DB_DATABASE、DB_USERNAME、DB_PASSWORD等配置
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=[database name]
+DB_USERNAME=[database username]
+DB_PASSWORD=[database password]
+```
 
-## Code of Conduct
+连接数据库并运行服务
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+php artisan cache:clear 
 
-## Security Vulnerabilities
+composer dump-autoload 
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+php artisan key:generate
+
+composer require laravel/breeze --dev
+
+php artisan breeze:install 
+
+php artisan serve
+```
+
+创建数据表
+
+```bash
+php artisan migrate
+```
+
+## 项目截图
+
+### 大屏效果：
+
+![image-20230722163609412](tiktok-clone/image-20230722163609412.png)
+
+
+
+![image-20230722164303018](tiktok-clone/image-20230722164303018.png)
+
+![image-20230722164432839](tiktok-clone/image-20230722164432839.png)
+
+![image-20230722164503390](tiktok-clone/image-20230722164503390.png)
+
+![image-20230722164551539](tiktok-clone/image-20230722164551539.png)
+
+### 小屏效果：
+
+| ![](tiktok-clone/image-20230722164757061.png)                | ![image-20230722164938168](tiktok-clone/image-20230722164938168.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![image-20230722165037412](tiktok-clone/image-20230722165037412.png) | ![image-20230722165126280](tiktok-clone/image-20230722165126280.png) |
+
+
+
+## 更多信息
+
+文档站：https://docs.mojing.live
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Copyright [2023] [Sha Zhiqing]
+
+   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, softwaredistributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+## About me
+
+
+
+<img src="https://picgo-1304966930.cos.ap-nanjing.myqcloud.com/logo.png" alt="logo" style="zoom:15%;" />MoJing 人工智能专业大三本科生
